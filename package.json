@@ -1,0 +1,32 @@
+{
+  "name": "__gi_gas_to_spreadsheet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "run-s build:rollup build:postprocess build:uglify build:clean build:prepare-for-gas",
+    "build:rollup": "rollup -c",
+    "build:postprocess": "ts-node ./postprocess.ts",
+    "build:uglify": "uglifyjs ./dist/bundle-postprocess.js -o ./dist/bundle-postprocess.min.js --comments all",
+    "build:clean": "rm ./dist/bundle-postprocess.js ./dist/bundle.js",
+    "build:prepare-for-gas": "cp ./appsscript.json ./dist/appsscript.json",
+    "push": "clasp push",
+    "start": "ts-node ./start.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/google-apps-script": "^1.0.57",
+    "@types/node": "^18.13.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^3.15.0",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
+    "uglify-js": "^3.17.4"
+  }
+}
