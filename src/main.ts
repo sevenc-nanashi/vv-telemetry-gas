@@ -40,12 +40,17 @@ export function doPost(e: GoogleAppsScript.Events.DoPost) {
 }
 
 export function doGet() {
-  const spreadsheet = SpreadsheetApp.openById(sheetId);
-  const sheet = spreadsheet.getSheets()[1];
-  const values = getValues(sheet);
-  return ContentService.createTextOutput(JSON.stringify(values)).setMimeType(
-    ContentService.MimeType.JSON
-  );
+  // const spreadsheet = SpreadsheetApp.openById(sheetId);
+  // const sheet = spreadsheet.getSheets()[1];
+  // const values = getValues(sheet);
+  // return ContentService.createTextOutput(JSON.stringify(values)).setMimeType(
+  //   ContentService.MimeType.JSON
+  // );
+  return ContentService.createTextOutput(
+    JSON.stringify({
+      api_version: 1,
+    })
+  ).setMimeType(ContentService.MimeType.JSON);
 }
 
 function getValues(sheet: GoogleAppsScript.Spreadsheet.Sheet) {
