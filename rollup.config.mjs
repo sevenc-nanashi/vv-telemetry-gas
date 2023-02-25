@@ -7,7 +7,8 @@ export default {
   input: "src/main.ts",
   output: {
     file: "dist/bundle.js",
+    minifyInternalExports: true,
+    compact: true,
   },
-  external: ["google-apps-script"],
   plugins: [typescript(), nodeResolve(), commonjs()],
 };
