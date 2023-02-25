@@ -12,25 +12,25 @@ export const dictWordSchema = z.object({
   priority: z.number(),
 });
 
-export const dictWordToList = (word: DictWord) => {
+export const dictWordToTuple = (row: DictWord) => {
   return [
-    word.word_uuid,
-    word.surface,
-    word.pronunciation,
-    word.accent_type,
-    word.word_type,
-    word.priority,
+    row.word_uuid,
+    row.surface,
+    row.pronunciation,
+    row.accent_type,
+    row.word_type,
+    row.priority,
   ];
 };
 
-export const dictWordFromList = (list: string[]) => {
+export const dictWordFromTuple = (row: string[]) => {
   return dictWordSchema.parse({
-    word_uuid: list[0],
-    surface: list[1],
-    pronunciation: list[2],
-    accent_type: parseInt(list[3]),
-    word_type: list[4] as unknown as DictWord["word_type"],
-    priority: parseInt(list[5]),
+    word_uuid: row[0],
+    surface: row[1],
+    pronunciation: row[2],
+    accent_type: parseInt(row[3]),
+    word_type: row[4] as unknown as DictWord["word_type"],
+    priority: parseInt(row[5]),
   });
 };
 

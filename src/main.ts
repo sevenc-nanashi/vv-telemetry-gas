@@ -1,5 +1,5 @@
 import { sheetId } from "./config";
-import { requestSchema, dictWordToList } from "./schema";
+import { requestSchema, dictWordToTuple } from "./schema";
 
 export function doPost(e: GoogleAppsScript.Events.DoPost) {
   const spreadsheet = SpreadsheetApp.openById(sheetId);
@@ -10,7 +10,7 @@ export function doPost(e: GoogleAppsScript.Events.DoPost) {
   switch (data.event) {
     case "apply_word": {
       sheet.appendRow([
-        ...dictWordToList(data.properties),
+        ...dictWordToTuple(data.properties),
         new Date().toISOString(),
       ]);
       break;
@@ -21,7 +21,7 @@ export function doPost(e: GoogleAppsScript.Events.DoPost) {
       if (row === -1) break;
       const range = sheet.getRange(row + 2, 1, 1, sheet.getLastColumn());
       range.setValues([
-        [...dictWordToList(data.properties), new Date().toISOString()],
+        [...dictWordToTuple(data.properties), new Date().toISOString()],
       ]);
       break;
     }
