@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "lib": ["esnext"],
-    "experimentalDecorators": true
-  }
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["google-apps-script", "node"]
+  },
+  "include": ["./src/**/*.ts"]
 }
